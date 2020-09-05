@@ -1,9 +1,15 @@
-# Fabric Example Mod
+# Armored Elytra
+
+Requires the [Fabric Loader](https://fabricmc.net/use/) and [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
 
 ## Setup
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+- Drop the mod in the mods folder
 
-## License
+## Info
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+- Shows the chestplate and elytra at the same when using the [Armored Elytra datapack (by Vanilla Tweaks)](https://vanillatweaks.net/picker/datapacks/)
+
+## Download
+
+- [Releases](https://github.com/mrmelon54/armored-elytra-fabric-1.16.2/releases/)
