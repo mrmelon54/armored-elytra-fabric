@@ -13,3 +13,4 @@ Requires the [Fabric Loader](https://fabricmc.net/use/) and [Fabric API](https:/
 ## Download
 
 - [Releases](https://github.com/mrmelon54/armored-elytra-fabric-1.16.2/releases/)
+- [CurseForge](https://www.curseforge.com/minecraft/mc-mods/armored-elytra)
