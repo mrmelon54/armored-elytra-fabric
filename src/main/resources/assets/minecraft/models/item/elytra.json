@@ -1,0 +1,44 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "item/elytra"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "armored_elytra_type": 0.1
+      },
+      "model": "armoredelytra:item/netherite_armored_elytra"
+    },
+    {
+      "predicate": {
+        "armored_elytra_type": 0.2
+      },
+      "model": "armoredelytra:item/diamond_armored_elytra"
+    },
+    {
+      "predicate": {
+        "armored_elytra_type": 0.3
+      },
+      "model": "armoredelytra:item/golden_armored_elytra"
+    },
+    {
+      "predicate": {
+        "armored_elytra_type": 0.4
+      },
+      "model": "armoredelytra:item/iron_armored_elytra"
+    },
+    {
+      "predicate": {
+        "armored_elytra_type": 0.5
+      },
+      "model": "armoredelytra:item/chainmail_armored_elytra"
+    },
+    {
+      "predicate": {
+        "armored_elytra_type": 0.6
+      },
+      "model": "armoredelytra:item/leather_armored_elytra"
+    }
+  ]
+}

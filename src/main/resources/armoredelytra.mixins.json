@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.onpointcoding.armoredelytra.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "MixinArmorFeatureRenderer",
+    "MixinLivingEntity"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
