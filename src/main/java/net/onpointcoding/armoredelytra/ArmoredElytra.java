@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import net.onpointcoding.armoredelytra.duckinterfaces.ArmoredElytraWearingEntity;
@@ -35,12 +34,6 @@ public class ArmoredElytra implements ModInitializer {
                 if (entity == null) continue;
                 if (entity instanceof ArmoredElytraWearingEntity) {
                     ((ArmoredElytraWearingEntity) entity).updateWearingArmoredElytra();
-                }
-            }
-            for (PlayerEntity player : mc.world.getPlayers()) {
-                if (player == null) continue;
-                if (player instanceof ArmoredElytraWearingEntity) {
-                    ((ArmoredElytraWearingEntity) player).updateWearingArmoredElytra();
                 }
             }
         }
