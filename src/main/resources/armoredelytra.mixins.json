@@ -5,7 +5,8 @@
   "compatibilityLevel": "JAVA_8",
   "client": [
     "MixinArmorFeatureRenderer",
-    "MixinLivingEntity"
+    "MixinLivingEntity",
+    "MixinLivingEntityChildren"
   ],
   "injectors": {
     "defaultRequire": 1

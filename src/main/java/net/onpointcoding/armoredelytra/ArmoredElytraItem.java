@@ -9,6 +9,7 @@ public class ArmoredElytraItem {
     public final ItemStack stack;
     public boolean isValid;
     public Item ChestplateType;
+    public boolean displayChestplateTick = false;
 
     public ArmoredElytraItem(ItemStack stack) {
         this.stack = stack;
@@ -71,5 +72,9 @@ public class ArmoredElytraItem {
     CompoundTag getArmoredElytraData() {
         if (!stack.isEmpty() && stack.getItem() == Items.ELYTRA) return stack.getSubTag("armElyData");
         return null;
+    }
+
+    public ItemStack getChestplateItemStack() {
+        return ItemStack.fromTag(getChestplate());
     }
 }
