@@ -30,7 +30,6 @@ public abstract class MixinLivingEntityChildren extends LivingEntity {
                 if (armoredElytraItem != null && armoredElytraItem.displayChestplateTick) {
                     ItemStack chestplateItemStack = armoredElytraItem.getChestplateItemStack();
                     if (chestplateItemStack != null) {
-                        System.out.println("returning " + chestplateItemStack.getTranslationKey());
                         callbackInfoReturnable.setReturnValue(chestplateItemStack);
                         callbackInfoReturnable.cancel();
                     }
