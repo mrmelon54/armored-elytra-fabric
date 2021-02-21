@@ -10,6 +10,10 @@ Requires the [Fabric Loader](https://fabricmc.net/use/) and [Fabric API](https:/
 
 - Shows the chestplate and elytra at the same when using the [Armored Elytra datapack (by Vanilla Tweaks)](https://vanillatweaks.net/picker/datapacks/)
 
+## Discord
+
+- https://discord.gg/4feNg7uN
+
 ## Download
 
 - [Releases](https://github.com/mrmelon54/armored-elytra-fabric-1.16/releases/)
