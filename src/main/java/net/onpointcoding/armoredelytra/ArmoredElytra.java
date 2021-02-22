@@ -15,6 +15,7 @@ import net.onpointcoding.armoredelytra.models.ArmoredElytraModelProvider;
 
 public class ArmoredElytra implements ModInitializer, ClientModInitializer {
     public static final String MODID = "armoredelytra";
+    public static final int DEFAULT_LEATHER_COLOR = 10511680;
     private CompoundTag chestplateOldTag;
 
     @Override
@@ -25,8 +26,8 @@ public class ArmoredElytra implements ModInitializer, ClientModInitializer {
         FabricModelPredicateProviderRegistry.register(Items.ELYTRA, new Identifier("armored_elytra_type"), armoredElytraModelProvider);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
             if (stack == null) return -1;
-            ArmoredElytraItem item = ArmoredElytraItem.fromItemStack(stack);
-            if (item == null || !item.isValid) return -1;
+            ChestplateWithElytraItem item = ChestplateWithElytraItem.fromItemStack(stack);
+            if (item == null || !item.getStatus()) return -1;
             return tintIndex > 0 ? -1 : item.getLeatherChestplateColor();
         }, Items.ELYTRA);
     }

@@ -8,7 +8,7 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.onpointcoding.armoredelytra.ArmoredElytraItem;
+import net.onpointcoding.armoredelytra.ChestplateWithElytraItem;
 import net.onpointcoding.armoredelytra.duckinterfaces.ArmoredElytraWearingEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -26,8 +26,8 @@ public abstract class MixinLivingEntityChildren extends LivingEntity {
         if (equipmentSlot == EquipmentSlot.CHEST) {
             if (this instanceof ArmoredElytraWearingEntity) {
                 ArmoredElytraWearingEntity armoredElytraWearingEntity = (ArmoredElytraWearingEntity) this;
-                ArmoredElytraItem armoredElytraItem = armoredElytraWearingEntity.getArmoredElytra();
-                if (armoredElytraItem != null && armoredElytraItem.displayChestplateTick) {
+                ChestplateWithElytraItem armoredElytraItem = armoredElytraWearingEntity.getArmoredElytra();
+                if (armoredElytraItem != null && armoredElytraItem.getDisplayChestplateTick()) {
                     ItemStack chestplateItemStack = armoredElytraItem.getChestplateItemStack();
                     if (chestplateItemStack != null) {
                         callbackInfoReturnable.setReturnValue(chestplateItemStack);

@@ -3,35 +3,32 @@ package net.onpointcoding.armoredelytra.mixin;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
-import net.onpointcoding.armoredelytra.ArmoredElytraItem;
+import net.onpointcoding.armoredelytra.ChestplateWithElytraItem;
 import net.onpointcoding.armoredelytra.duckinterfaces.ArmoredElytraWearingEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
 public abstract class MixinLivingEntity implements ArmoredElytraWearingEntity {
-    private ArmoredElytraItem armoredElytraItem;
+    private ChestplateWithElytraItem armoredElytraItem;
 
     @Shadow
     public abstract ItemStack getEquippedStack(EquipmentSlot slot);
 
     @Override
-    public ArmoredElytraItem getArmoredElytra() {
+    public ChestplateWithElytraItem getArmoredElytra() {
         return armoredElytraItem;
     }
 
     @Override
-    public void setArmoredElytra(ArmoredElytraItem value) {
+    public void setArmoredElytra(ChestplateWithElytraItem value) {
         if (armoredElytraItem != null && armoredElytraItem.equals(value)) return;
         armoredElytraItem = value;
     }
 
     public void updateWearingArmoredElytra() {
         ItemStack stack = getEquippedStack(EquipmentSlot.CHEST);
-        if (armoredElytraItem != null && stack == armoredElytraItem.stack) return;
-        setArmoredElytra(ArmoredElytraItem.fromItemStack(stack));
+        if (armoredElytraItem != null && stack == armoredElytraItem.getItemStack()) return;
+        setArmoredElytra(ChestplateWithElytraItem.fromItemStack(stack));
     }
 }

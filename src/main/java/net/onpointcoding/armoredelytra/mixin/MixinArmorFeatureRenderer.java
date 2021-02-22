@@ -8,17 +8,12 @@ import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.onpointcoding.armoredelytra.ArmoredElytraItem;
+import net.onpointcoding.armoredelytra.ChestplateWithElytraItem;
 import net.onpointcoding.armoredelytra.duckinterfaces.ArmoredElytraWearingEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ArmorFeatureRenderer.class)
@@ -40,11 +35,11 @@ public abstract class MixinArmorFeatureRenderer<T extends LivingEntity, M extend
     public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, T livingEntity, float f, float g, float h, float j, float k, float l, CallbackInfo info) {
         if (livingEntity instanceof ArmoredElytraWearingEntity) {
             ArmoredElytraWearingEntity armoredElytraWearingEntity = (ArmoredElytraWearingEntity) livingEntity;
-            ArmoredElytraItem armoredElytra = armoredElytraWearingEntity.getArmoredElytra();
+            ChestplateWithElytraItem armoredElytra = armoredElytraWearingEntity.getArmoredElytra();
             if (armoredElytra != null) {
-                armoredElytra.displayChestplateTick = true;
+                armoredElytra.setDisplayChestplateTick(true);
                 this.renderArmor(matrixStack, vertexConsumerProvider, livingEntity, EquipmentSlot.CHEST, i, this.getArmor(EquipmentSlot.CHEST));
-                armoredElytra.displayChestplateTick = false;
+                armoredElytra.setDisplayChestplateTick(false);
             }
         }
     }

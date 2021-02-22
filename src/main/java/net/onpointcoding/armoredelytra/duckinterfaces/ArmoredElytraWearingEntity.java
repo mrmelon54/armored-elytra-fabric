@@ -1,11 +1,11 @@
 package net.onpointcoding.armoredelytra.duckinterfaces;
 
-import net.onpointcoding.armoredelytra.ArmoredElytraItem;
+import net.onpointcoding.armoredelytra.ChestplateWithElytraItem;
 
 public interface ArmoredElytraWearingEntity {
-    ArmoredElytraItem getArmoredElytra();
+    ChestplateWithElytraItem getArmoredElytra();
 
-    void setArmoredElytra(ArmoredElytraItem value);
+    void setArmoredElytra(ChestplateWithElytraItem value);
 
     void updateWearingArmoredElytra();
 }
