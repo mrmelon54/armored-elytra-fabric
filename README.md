@@ -8,7 +8,8 @@ Requires the [Fabric Loader](https://fabricmc.net/use/) and [Fabric API](https:/
 
 ## Info
 
-- Shows the chestplate and elytra at the same when using the [Armored Elytra datapack (by Vanilla Tweaks)](https://vanillatweaks.net/picker/datapacks/) or [Plated Elytra datapack (by Voodoo Beard)](http://mc.voodoobeard.com/#plated_elytra)
+- This mod just displays the chestplate and elytra at the same time
+- Either of the datapacks: [Armored Elytra datapack (by Vanilla Tweaks)](https://vanillatweaks.net/picker/datapacks/) or [Plated Elytra datapack (by Voodoo Beard)](http://mc.voodoobeard.com/#plated_elytra) are required for using an armoured elytra.
 
 ## Discord
 
