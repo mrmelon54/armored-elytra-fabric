@@ -10,10 +10,10 @@
   ],
   "contact": {
     "homepage": "https://minecraft.onpointcoding.net/mods/armoredelytra",
-    "sources": "https://github.com/MrMelon54/armored-elytra-fabric-1.16.2"
+    "sources": "https://github.com/MrMelon54/armored-elytra-fabric-1.16"
   },
 
-  "license": "",
+  "license": "MIT",
   "icon": "assets/armoredelytra/icon.png",
 
   "environment": "*",
