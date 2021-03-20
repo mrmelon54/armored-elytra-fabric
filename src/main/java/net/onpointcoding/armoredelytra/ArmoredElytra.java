@@ -8,15 +8,12 @@ import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredica
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
 import net.onpointcoding.armoredelytra.duckinterfaces.ArmoredElytraWearingEntity;
 import net.onpointcoding.armoredelytra.models.ArmoredElytraModelProvider;
 
 public class ArmoredElytra implements ModInitializer, ClientModInitializer {
-    public static final String MODID = "armoredelytra";
     public static final int DEFAULT_LEATHER_COLOR = 10511680;
-    private CompoundTag chestplateOldTag;
 
     @Override
     public void onInitialize() {
