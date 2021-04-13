@@ -10,8 +10,9 @@ Logo made by [@LimeShulkerBox](https://www.curseforge.com/members/limeshulkerbox
 
 ## Info
 
-- This mod just displays the chestplate and elytra at the same time
+- This mod just displays the chestplate and elytra at the same time.
 - Either of the datapacks: [Armored Elytra datapack (by Vanilla Tweaks)](https://vanillatweaks.net/picker/datapacks/) or [Plated Elytra datapack (by Voodoo Beard)](http://mc.voodoobeard.com/#plated_elytra) are required for using an armoured elytra.
+- The mod: [Colytra (by TheIllusiveC4)](https://www.curseforge.com/minecraft/mc-mods/colytra-fabric) is also supported.
 
 ## Discord
 
