@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/chainmail_chestplate"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "armored_elytra_type": 0.1
+      },
+      "model": "armoredelytra:item/chainmail_armored_elytra"
+    }
+  ]
+}

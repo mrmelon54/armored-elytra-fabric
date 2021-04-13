@@ -3,6 +3,7 @@ package net.onpointcoding.armoredelytra;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
+import net.onpointcoding.armoredelytra.items.TheIllusiveC4ColytraItem;
 import net.onpointcoding.armoredelytra.items.VanillaTweaksArmoredElytraItem;
 import net.onpointcoding.armoredelytra.items.VoodooTweaksPlatedElytraItem;
 
@@ -24,6 +25,9 @@ public interface ChestplateWithElytraItem {
         VoodooTweaksPlatedElytraItem vtpe = VoodooTweaksPlatedElytraItem.fromItemStack(stack);
         if (vtpe != null)
             if (vtpe.isValid) return vtpe;
+        TheIllusiveC4ColytraItem ticc = TheIllusiveC4ColytraItem.fromItemStack(stack);
+        if (ticc != null)
+            if (ticc.isValid) return ticc;
         return null;
     }
 

@@ -18,4 +18,8 @@ public class InternalArrays {
     public static float chestplateToArmoredElytraId(Item chestplate) {
         return Arrays.asList(CHESTPLATES).indexOf(chestplate);
     }
+
+    public static boolean isItemChestplate(Item chestplate) {
+        return Arrays.asList(CHESTPLATES).contains(chestplate);
+    }
 }

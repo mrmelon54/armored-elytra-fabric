@@ -4,14 +4,13 @@ import net.minecraft.client.item.ModelPredicateProvider;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.onpointcoding.armoredelytra.ChestplateWithElytraItem;
 import net.onpointcoding.armoredelytra.InternalArrays;
 
 public class ArmoredElytraModelProvider implements ModelPredicateProvider {
     @Override
     public float call(ItemStack stack, ClientWorld world, LivingEntity entity) {
-        if (stack != null && stack.getItem() == Items.ELYTRA) {
+        if (stack != null && !stack.isEmpty()) {
             ChestplateWithElytraItem item = ChestplateWithElytraItem.fromItemStack(stack);
             if (item != null && item.getStatus()) {
                 float armoredElytraId = InternalArrays.chestplateToArmoredElytraId(item.getChestplateType());
