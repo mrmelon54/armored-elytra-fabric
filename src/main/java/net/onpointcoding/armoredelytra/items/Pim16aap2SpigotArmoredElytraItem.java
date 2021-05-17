@@ -59,25 +59,27 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
             if (elytra != null) {
                 switch (elytra.getInt("armoredelytra:armor_tier_level")) {
                     case 1:
-                        ChestplateType = Registry.ITEM.get(new Identifier("minecraft:leather_chestplate"));
-                        break;
+                        ChestplateType = Items.LEATHER_CHESTPLATE;
+                        return true;
                     case 2:
-                        ChestplateType = Registry.ITEM.get(new Identifier("minecraft:chainmail_chestplate"));
-                        break;
+                        ChestplateType = Items.CHAINMAIL_CHESTPLATE;
+                        return true;
                     case 3:
-                        ChestplateType = Registry.ITEM.get(new Identifier("minecraft:golden_chestplate"));
-                        break;
+                        ChestplateType = Items.GOLDEN_CHESTPLATE;
+                        return true;
                     case 4:
-                        ChestplateType = Registry.ITEM.get(new Identifier("minecraft:iron_chestplate"));
-                        break;
+                        ChestplateType = Items.IRON_CHESTPLATE;
+                        return true;
                     case 5:
-                        ChestplateType = Registry.ITEM.get(new Identifier("minecraft:diamond_chestplate"));
-                        break;
+                        ChestplateType = Items.DIAMOND_CHESTPLATE;
+                        return true;
                     case 6:
-                        ChestplateType = Registry.ITEM.get(new Identifier("minecraft:netherite_chestplate"));
-                        break;
+                        ChestplateType = Items.NETHERITE_CHESTPLATE;
+                        return true;
+                    default:
+                        ChestplateType = Items.AIR;
+                        return false;
                 }
-                return ChestplateType != Items.AIR;
             }
         }
         return false;
