@@ -87,6 +87,7 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
 
     public int getLeatherChestplateColor() {
         // Pim's Armored Elytra plans to store this data in future, for now just returning default leather color
+        if (ChestplateType != Items.LEATHER_CHESTPLATE) return -1;
         return DEFAULT_LEATHER_COLOR;
     }
 
