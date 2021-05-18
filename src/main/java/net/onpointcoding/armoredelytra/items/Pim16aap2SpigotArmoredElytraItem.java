@@ -47,7 +47,7 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
 
     public boolean equals(ChestplateWithElytraItem b) {
         if (b == null) return false;
-        if (b instanceof VanillaTweaksArmoredElytraItem) return stack == ((VanillaTweaksArmoredElytraItem) b).stack;
+        if (b instanceof Pim16aap2SpigotArmoredElytraItem) return stack == ((Pim16aap2SpigotArmoredElytraItem) b).stack;
         return false;
     }
 
