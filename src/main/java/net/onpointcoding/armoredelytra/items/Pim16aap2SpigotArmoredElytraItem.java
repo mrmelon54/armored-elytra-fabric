@@ -101,7 +101,7 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
 
     public CompoundTag getChestplate() {
         ItemStack chestplate = new ItemStack(ChestplateType);
-        return chestplate.getTag();
+        return chestplate.getOrCreateTag();
     }
 
     public ItemStack getChestplateItemStack() {
@@ -111,6 +111,9 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
             subtag.putInt("color", color);
             chestplate.putSubTag("display", subtag);
         }
+        CompoundTag tag = chestplate.getOrCreateTag();
+        tag.put("Enchantments", stack.getEnchantments());
+        chestplate.setTag(tag);
         return chestplate;
     }
 }
