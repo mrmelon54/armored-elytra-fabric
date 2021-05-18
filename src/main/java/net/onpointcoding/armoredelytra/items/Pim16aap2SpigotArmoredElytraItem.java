@@ -62,10 +62,10 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
                             color = elytra.getInt("armoredelytra:armored_elytra_color");
                         return true;
                     case 2:
-                        ChestplateType = Items.CHAINMAIL_CHESTPLATE;
+                        ChestplateType = Items.GOLDEN_CHESTPLATE;
                         return true;
                     case 3:
-                        ChestplateType = Items.GOLDEN_CHESTPLATE;
+                        ChestplateType = Items.CHAINMAIL_CHESTPLATE;
                         return true;
                     case 4:
                         ChestplateType = Items.IRON_CHESTPLATE;
