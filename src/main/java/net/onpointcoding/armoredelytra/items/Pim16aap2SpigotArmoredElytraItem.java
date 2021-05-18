@@ -4,17 +4,15 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.onpointcoding.armoredelytra.ArmoredElytra;
 import net.onpointcoding.armoredelytra.ChestplateWithElytraItem;
-
-import static net.onpointcoding.armoredelytra.ArmoredElytra.DEFAULT_LEATHER_COLOR;
 
 public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraItem {
     public final ItemStack stack;
     public boolean isValid;
     public Item ChestplateType;
     public boolean displayChestplateTick = false;
+    public int color = ArmoredElytra.DEFAULT_LEATHER_COLOR;
 
     public Pim16aap2SpigotArmoredElytraItem(ItemStack stack) {
         this.stack = stack;
@@ -60,6 +58,8 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
                 switch (elytra.getInt("armoredelytra:armor_tier_level")) {
                     case 1:
                         ChestplateType = Items.LEATHER_CHESTPLATE;
+                        if (elytra.getKeys().contains("armoredelytra:armored_elytra_color"))
+                            color = getElytra().getInt("armoredelytra:armored_elytra_color");
                         return true;
                     case 2:
                         ChestplateType = Items.CHAINMAIL_CHESTPLATE;
@@ -86,9 +86,8 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
     }
 
     public int getLeatherChestplateColor() {
-        // Pim's Armored Elytra plans to store this data in future, for now just returning default leather color
         if (ChestplateType != Items.LEATHER_CHESTPLATE) return -1;
-        return DEFAULT_LEATHER_COLOR;
+        return color;
     }
 
     public CompoundTag getElytra() {
@@ -101,10 +100,17 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
     }
 
     public CompoundTag getChestplate() {
-        return stack.toTag(new CompoundTag());
+        ItemStack chestplate = new ItemStack(ChestplateType);
+        return chestplate.getTag();
     }
 
     public ItemStack getChestplateItemStack() {
-        return new ItemStack(ChestplateType);
+        ItemStack chestplate = new ItemStack(ChestplateType);
+        if (ChestplateType == Items.LEATHER_CHESTPLATE) {
+            CompoundTag subtag = new CompoundTag();
+            subtag.putInt("color", color);
+            chestplate.putSubTag("display", subtag);
+        }
+        return chestplate;
     }
 }
