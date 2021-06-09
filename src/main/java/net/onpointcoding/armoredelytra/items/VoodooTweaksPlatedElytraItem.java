@@ -87,20 +87,35 @@ public class VoodooTweaksPlatedElytraItem implements ChestplateWithElytraItem {
         CompoundTag armelydata = getArmoredElytraData();
         if (armelydata != null) {
             String plate = armelydata.getCompound("tag").getString("Plate");
+            CompoundTag chestplateStack;
             switch (plate) {
                 case "netherite":
-                    return (new ItemStack(Items.NETHERITE_CHESTPLATE)).toTag(new CompoundTag());
+                    chestplateStack = (new ItemStack(Items.NETHERITE_CHESTPLATE)).toTag(new CompoundTag());
+                    break;
                 case "diamond":
-                    return (new ItemStack(Items.DIAMOND_CHESTPLATE)).toTag(new CompoundTag());
+                    chestplateStack = (new ItemStack(Items.DIAMOND_CHESTPLATE)).toTag(new CompoundTag());
+                    break;
                 case "golden":
-                    return (new ItemStack(Items.GOLDEN_CHESTPLATE)).toTag(new CompoundTag());
+                    chestplateStack = (new ItemStack(Items.GOLDEN_CHESTPLATE)).toTag(new CompoundTag());
+                    break;
                 case "iron":
-                    return (new ItemStack(Items.IRON_CHESTPLATE)).toTag(new CompoundTag());
+                    chestplateStack = (new ItemStack(Items.IRON_CHESTPLATE)).toTag(new CompoundTag());
+                    break;
                 case "chainmail":
-                    return (new ItemStack(Items.CHAINMAIL_CHESTPLATE)).toTag(new CompoundTag());
+                    chestplateStack = (new ItemStack(Items.CHAINMAIL_CHESTPLATE)).toTag(new CompoundTag());
+                    break;
                 case "leather":
-                    return (new ItemStack(Items.LEATHER_CHESTPLATE)).toTag(new CompoundTag());
+                    chestplateStack = (new ItemStack(Items.LEATHER_CHESTPLATE)).toTag(new CompoundTag());
+                    break;
+                default:
+                    return null;
             }
+            if (armelydata.getCompound("tag").contains("color")) {
+                CompoundTag displaytag = chestplateStack.getCompound("tag").getCompound("display");
+                displaytag.putInt("color", armelydata.getCompound("tag").getInt("color"));
+                chestplateStack.getCompound("tag").put("display", displaytag);
+            }
+            return chestplateStack;
         }
         return null;
     }
