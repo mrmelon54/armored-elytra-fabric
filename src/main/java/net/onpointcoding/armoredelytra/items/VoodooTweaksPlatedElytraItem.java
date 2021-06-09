@@ -3,7 +3,7 @@ package net.onpointcoding.armoredelytra.items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.onpointcoding.armoredelytra.ArmoredElytra;
 import net.onpointcoding.armoredelytra.ChestplateWithElytraItem;
 
@@ -55,10 +55,10 @@ public class VoodooTweaksPlatedElytraItem implements ChestplateWithElytraItem {
     public boolean isArmoredElytra() {
         if (!stack.isEmpty()) {
             if (stack.getItem() == Items.ELYTRA) {
-                CompoundTag chestplate = getChestplate();
-                CompoundTag elytra = getElytra();
+                NbtCompound chestplate = getChestplate();
+                NbtCompound elytra = getElytra();
                 if (chestplate != null && elytra != null) {
-                    ItemStack chestplateStack = ItemStack.fromTag(chestplate);
+                    ItemStack chestplateStack = ItemStack.fromNbt(chestplate);
                     ChestplateType = chestplateStack.getItem();
                     return ChestplateType != Items.AIR;
                 }
@@ -68,50 +68,50 @@ public class VoodooTweaksPlatedElytraItem implements ChestplateWithElytraItem {
     }
 
     public int getLeatherChestplateColor() {
-        CompoundTag leatherChestplate = getChestplate();
-        if (ItemStack.fromTag(leatherChestplate).getItem() != Items.LEATHER_CHESTPLATE) return -1;
+        NbtCompound leatherChestplate = getChestplate();
+        if (ItemStack.fromNbt(leatherChestplate).getItem() != Items.LEATHER_CHESTPLATE) return -1;
         if (leatherChestplate == null) return -1;
-        CompoundTag tagdata = leatherChestplate.getCompound("tag");
+        NbtCompound tagdata = leatherChestplate.getCompound("tag");
         if (tagdata == null) return ArmoredElytra.DEFAULT_LEATHER_COLOR;
-        CompoundTag displaydata = tagdata.getCompound("display");
+        NbtCompound displaydata = tagdata.getCompound("display");
         if (displaydata == null) return ArmoredElytra.DEFAULT_LEATHER_COLOR;
         if (!displaydata.contains("color")) return ArmoredElytra.DEFAULT_LEATHER_COLOR;
         return displaydata.getInt("color");
     }
 
-    public CompoundTag getElytra() {
+    public NbtCompound getElytra() {
         return getArmoredElytraData();
     }
 
-    public CompoundTag getChestplate() {
-        CompoundTag armelydata = getArmoredElytraData();
+    public NbtCompound getChestplate() {
+        NbtCompound armelydata = getArmoredElytraData();
         if (armelydata != null) {
             String plate = armelydata.getCompound("tag").getString("Plate");
-            CompoundTag chestplateStack;
+            NbtCompound chestplateStack;
             switch (plate) {
                 case "netherite":
-                    chestplateStack = (new ItemStack(Items.NETHERITE_CHESTPLATE)).toTag(new CompoundTag());
+                    chestplateStack = (new ItemStack(Items.NETHERITE_CHESTPLATE)).writeNbt(new NbtCompound());
                     break;
                 case "diamond":
-                    chestplateStack = (new ItemStack(Items.DIAMOND_CHESTPLATE)).toTag(new CompoundTag());
+                    chestplateStack = (new ItemStack(Items.DIAMOND_CHESTPLATE)).writeNbt(new NbtCompound());
                     break;
                 case "golden":
-                    chestplateStack = (new ItemStack(Items.GOLDEN_CHESTPLATE)).toTag(new CompoundTag());
+                    chestplateStack = (new ItemStack(Items.GOLDEN_CHESTPLATE)).writeNbt(new NbtCompound());
                     break;
                 case "iron":
-                    chestplateStack = (new ItemStack(Items.IRON_CHESTPLATE)).toTag(new CompoundTag());
+                    chestplateStack = (new ItemStack(Items.IRON_CHESTPLATE)).writeNbt(new NbtCompound());
                     break;
                 case "chainmail":
-                    chestplateStack = (new ItemStack(Items.CHAINMAIL_CHESTPLATE)).toTag(new CompoundTag());
+                    chestplateStack = (new ItemStack(Items.CHAINMAIL_CHESTPLATE)).writeNbt(new NbtCompound());
                     break;
                 case "leather":
-                    chestplateStack = (new ItemStack(Items.LEATHER_CHESTPLATE)).toTag(new CompoundTag());
+                    chestplateStack = (new ItemStack(Items.LEATHER_CHESTPLATE)).writeNbt(new NbtCompound());
                     break;
                 default:
                     return null;
             }
             if (armelydata.getCompound("tag").contains("color")) {
-                CompoundTag displaytag = chestplateStack.getCompound("tag").getCompound("display");
+                NbtCompound displaytag = chestplateStack.getCompound("tag").getCompound("display");
                 displaytag.putInt("color", armelydata.getCompound("tag").getInt("color"));
                 chestplateStack.getCompound("tag").put("display", displaytag);
             }
@@ -120,12 +120,12 @@ public class VoodooTweaksPlatedElytraItem implements ChestplateWithElytraItem {
         return null;
     }
 
-    public CompoundTag getArmoredElytraData() {
-        if (!stack.isEmpty() && stack.getItem() == Items.ELYTRA) return stack.toTag(new CompoundTag());
+    public NbtCompound getArmoredElytraData() {
+        if (!stack.isEmpty() && stack.getItem() == Items.ELYTRA) return stack.writeNbt(new NbtCompound());
         return null;
     }
 
     public ItemStack getChestplateItemStack() {
-        return ItemStack.fromTag(getChestplate());
+        return ItemStack.fromNbt(getChestplate());
     }
 }

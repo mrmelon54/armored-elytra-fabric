@@ -3,7 +3,7 @@ package net.onpointcoding.armoredelytra.items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.onpointcoding.armoredelytra.ArmoredElytra;
 import net.onpointcoding.armoredelytra.ChestplateWithElytraItem;
 
@@ -53,7 +53,7 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
 
     public boolean isArmoredElytra() {
         if (!stack.isEmpty()) {
-            CompoundTag elytra = getElytra();
+            NbtCompound elytra = getElytra();
             if (elytra != null) {
                 switch (elytra.getInt("armoredelytra:armor_tier_level")) {
                     case 1:
@@ -90,16 +90,16 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
         return color;
     }
 
-    public CompoundTag getElytra() {
+    public NbtCompound getElytra() {
         return stack.getSubTag("PublicBukkitValues");
     }
 
-    public CompoundTag getArmoredElytraData() {
-        if (!stack.isEmpty()) return stack.toTag(new CompoundTag());
+    public NbtCompound getArmoredElytraData() {
+        if (!stack.isEmpty()) return stack.writeNbt(new NbtCompound());
         return null;
     }
 
-    public CompoundTag getChestplate() {
+    public NbtCompound getChestplate() {
         ItemStack chestplate = new ItemStack(ChestplateType);
         return chestplate.getOrCreateTag();
     }
@@ -107,11 +107,11 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
     public ItemStack getChestplateItemStack() {
         ItemStack chestplate = new ItemStack(ChestplateType);
         if (ChestplateType == Items.LEATHER_CHESTPLATE) {
-            CompoundTag subtag = new CompoundTag();
+            NbtCompound subtag = new NbtCompound();
             subtag.putInt("color", color);
             chestplate.putSubTag("display", subtag);
         }
-        CompoundTag tag = chestplate.getOrCreateTag();
+        NbtCompound tag = chestplate.getOrCreateTag();
         tag.put("Enchantments", stack.getEnchantments());
         chestplate.setTag(tag);
         return chestplate;

@@ -2,7 +2,7 @@ package net.onpointcoding.armoredelytra;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.onpointcoding.armoredelytra.items.Pim16aap2SpigotArmoredElytraItem;
 import net.onpointcoding.armoredelytra.items.TheIllusiveC4ColytraItem;
 import net.onpointcoding.armoredelytra.items.VanillaTweaksArmoredElytraItem;
@@ -41,11 +41,11 @@ public interface ChestplateWithElytraItem {
 
     int getLeatherChestplateColor();
 
-    CompoundTag getElytra();
+    NbtCompound getElytra();
 
-    CompoundTag getChestplate();
+    NbtCompound getChestplate();
 
-    CompoundTag getArmoredElytraData();
+    NbtCompound getArmoredElytraData();
 
     ItemStack getChestplateItemStack();
 }

@@ -3,7 +3,7 @@ package net.onpointcoding.armoredelytra.items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.onpointcoding.armoredelytra.ArmoredElytra;
 import net.onpointcoding.armoredelytra.ChestplateWithElytraItem;
 
@@ -53,10 +53,10 @@ public class VanillaTweaksArmoredElytraItem implements ChestplateWithElytraItem 
     public boolean isArmoredElytra() {
         if (!stack.isEmpty()) {
             if (stack.getItem() == Items.ELYTRA) {
-                CompoundTag chestplate = getChestplate();
-                CompoundTag elytra = getElytra();
+                NbtCompound chestplate = getChestplate();
+                NbtCompound elytra = getElytra();
                 if (chestplate != null && elytra != null) {
-                    ItemStack chestplateStack = ItemStack.fromTag(chestplate);
+                    ItemStack chestplateStack = ItemStack.fromNbt(chestplate);
                     ChestplateType = chestplateStack.getItem();
                     return ChestplateType != Items.AIR;
                 }
@@ -66,39 +66,39 @@ public class VanillaTweaksArmoredElytraItem implements ChestplateWithElytraItem 
     }
 
     public int getLeatherChestplateColor() {
-        CompoundTag leatherChestplate = getChestplate();
-        if (ItemStack.fromTag(leatherChestplate).getItem() != Items.LEATHER_CHESTPLATE) return -1;
+        NbtCompound leatherChestplate = getChestplate();
+        if (ItemStack.fromNbt(leatherChestplate).getItem() != Items.LEATHER_CHESTPLATE) return -1;
         if (leatherChestplate == null) return -1;
-        CompoundTag tagdata = leatherChestplate.getCompound("tag");
+        NbtCompound tagdata = leatherChestplate.getCompound("tag");
         if (tagdata == null) return ArmoredElytra.DEFAULT_LEATHER_COLOR;
-        CompoundTag displaydata = tagdata.getCompound("display");
+        NbtCompound displaydata = tagdata.getCompound("display");
         if (displaydata == null) return ArmoredElytra.DEFAULT_LEATHER_COLOR;
         if (!displaydata.contains("color")) return ArmoredElytra.DEFAULT_LEATHER_COLOR;
         return displaydata.getInt("color");
     }
 
-    public CompoundTag getElytra() {
-        CompoundTag armelydata = getArmoredElytraData();
+    public NbtCompound getElytra() {
+        NbtCompound armelydata = getArmoredElytraData();
         if (armelydata != null) {
             return armelydata.getCompound("elytra");
         }
         return null;
     }
 
-    public CompoundTag getChestplate() {
-        CompoundTag armelydata = getArmoredElytraData();
+    public NbtCompound getChestplate() {
+        NbtCompound armelydata = getArmoredElytraData();
         if (armelydata != null) {
             return armelydata.getCompound("chestplate");
         }
         return null;
     }
 
-    public CompoundTag getArmoredElytraData() {
+    public NbtCompound getArmoredElytraData() {
         if (!stack.isEmpty() && stack.getItem() == Items.ELYTRA) return stack.getSubTag("armElyData");
         return null;
     }
 
     public ItemStack getChestplateItemStack() {
-        return ItemStack.fromTag(getChestplate());
+        return ItemStack.fromNbt(getChestplate());
     }
 }

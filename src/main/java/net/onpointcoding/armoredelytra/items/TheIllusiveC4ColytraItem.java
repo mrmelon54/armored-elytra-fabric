@@ -3,7 +3,7 @@ package net.onpointcoding.armoredelytra.items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.onpointcoding.armoredelytra.ArmoredElytra;
 import net.onpointcoding.armoredelytra.ChestplateWithElytraItem;
 import net.onpointcoding.armoredelytra.InternalArrays;
@@ -54,7 +54,7 @@ public class TheIllusiveC4ColytraItem implements ChestplateWithElytraItem {
     public boolean isArmoredElytra() {
         if (!stack.isEmpty()) {
             if (InternalArrays.isItemChestplate(stack.getItem())) {
-                CompoundTag elytra = getElytra();
+                NbtCompound elytra = getElytra();
                 if (elytra != null) {
                     ChestplateType = stack.getItem();
                     return ChestplateType != Items.AIR;
@@ -65,28 +65,28 @@ public class TheIllusiveC4ColytraItem implements ChestplateWithElytraItem {
     }
 
     public int getLeatherChestplateColor() {
-        CompoundTag leatherChestplate = getChestplate();
-        if (ItemStack.fromTag(leatherChestplate).getItem() != Items.LEATHER_CHESTPLATE) return -1;
+        NbtCompound leatherChestplate = getChestplate();
+        if (ItemStack.fromNbt(leatherChestplate).getItem() != Items.LEATHER_CHESTPLATE) return -1;
         if (leatherChestplate == null) return -1;
-        CompoundTag tagdata = leatherChestplate.getCompound("tag");
+        NbtCompound tagdata = leatherChestplate.getCompound("tag");
         if (tagdata == null) return ArmoredElytra.DEFAULT_LEATHER_COLOR;
-        CompoundTag displaydata = tagdata.getCompound("display");
+        NbtCompound displaydata = tagdata.getCompound("display");
         if (displaydata == null) return ArmoredElytra.DEFAULT_LEATHER_COLOR;
         if (!displaydata.contains("color")) return ArmoredElytra.DEFAULT_LEATHER_COLOR;
         return displaydata.getInt("color");
     }
 
-    public CompoundTag getElytra() {
+    public NbtCompound getElytra() {
         return stack.getSubTag("colytra:ElytraUpgrade");
     }
 
-    public CompoundTag getArmoredElytraData() {
-        if (!stack.isEmpty()) return stack.toTag(new CompoundTag());
+    public NbtCompound getArmoredElytraData() {
+        if (!stack.isEmpty()) return stack.writeNbt(new NbtCompound());
         return null;
     }
 
-    public CompoundTag getChestplate() {
-        return stack.toTag(new CompoundTag());
+    public NbtCompound getChestplate() {
+        return stack.writeNbt(new NbtCompound());
     }
 
     public ItemStack getChestplateItemStack() {
