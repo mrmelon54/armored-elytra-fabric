@@ -1,5 +1,7 @@
 # Armored Elytra
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/W7W1607S8)
+
 Requires the [Fabric Loader](https://fabricmc.net/use/) and [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
 
 Logo made by [@LimeShulkerBox](https://www.curseforge.com/members/limeshulkerbox/projects)
