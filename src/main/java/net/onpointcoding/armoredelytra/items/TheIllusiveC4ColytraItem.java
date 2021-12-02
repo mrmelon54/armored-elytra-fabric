@@ -77,7 +77,7 @@ public class TheIllusiveC4ColytraItem implements ChestplateWithElytraItem {
     }
 
     public NbtCompound getElytra() {
-        return stack.getSubTag("colytra:ElytraUpgrade");
+        return stack.getSubNbt("colytra:ElytraUpgrade");
     }
 
     public NbtCompound getArmoredElytraData() {

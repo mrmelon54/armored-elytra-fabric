@@ -91,7 +91,7 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
     }
 
     public NbtCompound getElytra() {
-        return stack.getSubTag("PublicBukkitValues");
+        return stack.getSubNbt("PublicBukkitValues");
     }
 
     public NbtCompound getArmoredElytraData() {
@@ -101,7 +101,7 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
 
     public NbtCompound getChestplate() {
         ItemStack chestplate = new ItemStack(ChestplateType);
-        return chestplate.getOrCreateTag();
+        return chestplate.getOrCreateNbt();
     }
 
     public ItemStack getChestplateItemStack() {
@@ -109,11 +109,11 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
         if (ChestplateType == Items.LEATHER_CHESTPLATE) {
             NbtCompound subtag = new NbtCompound();
             subtag.putInt("color", color);
-            chestplate.putSubTag("display", subtag);
+            chestplate.setSubNbt("display", subtag);
         }
-        NbtCompound tag = chestplate.getOrCreateTag();
+        NbtCompound tag = chestplate.getOrCreateNbt();
         tag.put("Enchantments", stack.getEnchantments());
-        chestplate.setTag(tag);
+        chestplate.setNbt(tag);
         return chestplate;
     }
 }

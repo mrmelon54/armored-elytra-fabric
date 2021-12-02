@@ -94,7 +94,7 @@ public class VanillaTweaksArmoredElytraItem implements ChestplateWithElytraItem 
     }
 
     public NbtCompound getArmoredElytraData() {
-        if (!stack.isEmpty() && stack.getItem() == Items.ELYTRA) return stack.getSubTag("armElyData");
+        if (!stack.isEmpty() && stack.getItem() == Items.ELYTRA) return stack.getSubNbt("armElyData");
         return null;
     }
 
