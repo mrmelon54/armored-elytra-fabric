@@ -31,10 +31,9 @@ public abstract class MixinArmorFeatureRenderer<T extends LivingEntity, M extend
     @Shadow
     protected abstract void renderArmor(MatrixStack matrices, VertexConsumerProvider vertexConsumers, T livingEntity, EquipmentSlot equipmentSlot, int i, A bipedEntityModel);
 
-    @Inject(at = @At("HEAD"), method = "render")
+    @Inject(at = @At("HEAD"), method = "render*")
     public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, T livingEntity, float f, float g, float h, float j, float k, float l, CallbackInfo info) {
-        if (livingEntity instanceof ArmoredElytraWearingEntity) {
-            ArmoredElytraWearingEntity armoredElytraWearingEntity = (ArmoredElytraWearingEntity) livingEntity;
+        if (livingEntity instanceof ArmoredElytraWearingEntity armoredElytraWearingEntity) {
             ChestplateWithElytraItem armoredElytra = armoredElytraWearingEntity.getArmoredElytra();
             if (armoredElytra != null) {
                 armoredElytra.setDisplayChestplateTick(true);
