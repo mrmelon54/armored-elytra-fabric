@@ -4,6 +4,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtList;
 import net.onpointcoding.armoredelytra.ArmoredElytra;
 import net.onpointcoding.armoredelytra.ChestplateWithElytraItem;
 
@@ -50,6 +51,13 @@ public class VoodooTweaksPlatedElytraItem implements ChestplateWithElytraItem {
         if (b == null) return false;
         if (b instanceof VoodooTweaksPlatedElytraItem) return stack == ((VoodooTweaksPlatedElytraItem) b).stack;
         return false;
+    }
+
+    @Override
+    public boolean hasEnchantmentGlint() {
+        NbtList elytraEnch = stack.getEnchantments();
+        NbtList chestEnch = getChestplateItemStack().getEnchantments();
+        return elytraEnch.size() + chestEnch.size() > 0;
     }
 
     public boolean isArmoredElytra() {

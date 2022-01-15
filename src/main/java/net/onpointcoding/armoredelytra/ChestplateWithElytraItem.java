@@ -21,21 +21,19 @@ public interface ChestplateWithElytraItem {
 
     static ChestplateWithElytraItem fromItemStack(ItemStack stack) {
         VanillaTweaksArmoredElytraItem vtae = VanillaTweaksArmoredElytraItem.fromItemStack(stack);
-        if (vtae != null)
-            if (vtae.isValid) return vtae;
+        if (vtae != null && vtae.isValid) return vtae;
         VoodooTweaksPlatedElytraItem vtpe = VoodooTweaksPlatedElytraItem.fromItemStack(stack);
-        if (vtpe != null)
-            if (vtpe.isValid) return vtpe;
+        if (vtpe != null && vtpe.isValid) return vtpe;
         TheIllusiveC4ColytraItem ticc = TheIllusiveC4ColytraItem.fromItemStack(stack);
-        if (ticc != null)
-            if (ticc.isValid) return ticc;
+        if (ticc != null && ticc.isValid) return ticc;
         Pim16aap2SpigotArmoredElytraItem psae = Pim16aap2SpigotArmoredElytraItem.fromItemStack(stack);
-        if (psae != null)
-            if (psae.isValid) return psae;
+        if (psae != null && psae.isValid) return psae;
         return null;
     }
 
     boolean equals(ChestplateWithElytraItem b);
+
+    boolean hasEnchantmentGlint();
 
     boolean isArmoredElytra();
 

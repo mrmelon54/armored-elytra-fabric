@@ -37,7 +37,11 @@ public abstract class MixinArmorFeatureRenderer<T extends LivingEntity, M extend
             ChestplateWithElytraItem armoredElytra = armoredElytraWearingEntity.getArmoredElytra();
             if (armoredElytra != null) {
                 armoredElytra.setDisplayChestplateTick(true);
-                this.renderArmor(matrixStack, vertexConsumerProvider, livingEntity, EquipmentSlot.CHEST, i, this.getArmor(EquipmentSlot.CHEST));
+                if (armoredElytra.hasEnchantmentGlint()) {
+                    this.renderArmor(matrixStack, vertexConsumerProvider, livingEntity, EquipmentSlot.CHEST, i, this.getArmor(EquipmentSlot.CHEST));
+                } else {
+                    this.renderArmor(matrixStack, vertexConsumerProvider, livingEntity, EquipmentSlot.CHEST, i, this.getArmor(EquipmentSlot.CHEST));
+                }
                 armoredElytra.setDisplayChestplateTick(false);
             }
         }

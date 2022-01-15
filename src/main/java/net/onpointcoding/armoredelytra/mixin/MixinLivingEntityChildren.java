@@ -1,5 +1,6 @@
 package net.onpointcoding.armoredelytra.mixin;
 
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -24,12 +25,13 @@ public abstract class MixinLivingEntityChildren extends LivingEntity {
     @Inject(method = "getEquippedStack", at = @At("HEAD"), cancellable = true)
     public void hackGetEquippedStack(EquipmentSlot equipmentSlot, CallbackInfoReturnable<ItemStack> callbackInfoReturnable) {
         if (equipmentSlot == EquipmentSlot.CHEST) {
-            if (this instanceof ArmoredElytraWearingEntity) {
-                ArmoredElytraWearingEntity armoredElytraWearingEntity = (ArmoredElytraWearingEntity) this;
+            if (this instanceof ArmoredElytraWearingEntity armoredElytraWearingEntity) {
                 ChestplateWithElytraItem armoredElytraItem = armoredElytraWearingEntity.getArmoredElytra();
                 if (armoredElytraItem != null && armoredElytraItem.getDisplayChestplateTick()) {
                     ItemStack chestplateItemStack = armoredElytraItem.getChestplateItemStack();
                     if (chestplateItemStack != null) {
+                        if (armoredElytraItem.hasEnchantmentGlint())
+                            chestplateItemStack.addEnchantment(Enchantments.MENDING, 1);
                         callbackInfoReturnable.setReturnValue(chestplateItemStack);
                         callbackInfoReturnable.cancel();
                     }

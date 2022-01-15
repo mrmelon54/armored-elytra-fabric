@@ -4,6 +4,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtList;
 import net.onpointcoding.armoredelytra.ArmoredElytra;
 import net.onpointcoding.armoredelytra.ChestplateWithElytraItem;
 
@@ -49,6 +50,13 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
         if (b == null) return false;
         if (b instanceof Pim16aap2SpigotArmoredElytraItem) return stack == ((Pim16aap2SpigotArmoredElytraItem) b).stack;
         return false;
+    }
+
+    @Override
+    public boolean hasEnchantmentGlint() {
+        NbtList elytraEnch = stack.getEnchantments();
+        NbtList chestEnch = getChestplateItemStack().getEnchantments();
+        return elytraEnch.size() + chestEnch.size() > 0;
     }
 
     public boolean isArmoredElytra() {
@@ -111,9 +119,6 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
             subtag.putInt("color", color);
             chestplate.setSubNbt("display", subtag);
         }
-        NbtCompound tag = chestplate.getOrCreateNbt();
-        tag.put("Enchantments", stack.getEnchantments());
-        chestplate.setNbt(tag);
         return chestplate;
     }
 }
