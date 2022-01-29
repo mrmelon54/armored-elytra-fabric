@@ -1,4 +1,4 @@
-package net.onpointcoding.armoredelytra;
+package xyz.mrmelon54.armoredelytra;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
@@ -10,8 +10,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
-import net.onpointcoding.armoredelytra.duckinterfaces.ArmoredElytraWearingEntity;
-import net.onpointcoding.armoredelytra.models.ArmoredElytraModelProvider;
+import xyz.mrmelon54.armoredelytra.duckinterfaces.ArmoredElytraWearingEntity;
+import xyz.mrmelon54.armoredelytra.models.ArmoredElytraModelProvider;
 
 public class ArmoredElytra implements ModInitializer, ClientModInitializer {
     public static final int DEFAULT_LEATHER_COLOR = 10511680;

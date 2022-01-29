@@ -1,4 +1,4 @@
-package net.onpointcoding.armoredelytra;
+package xyz.mrmelon54.armoredelytra;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;

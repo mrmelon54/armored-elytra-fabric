@@ -1,4 +1,4 @@
-package net.onpointcoding.armoredelytra.mixin;
+package xyz.mrmelon54.armoredelytra.mixin;
 
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.feature.ArmorFeatureRenderer;
@@ -8,8 +8,8 @@ import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.onpointcoding.armoredelytra.ChestplateWithElytraItem;
-import net.onpointcoding.armoredelytra.duckinterfaces.ArmoredElytraWearingEntity;
+import xyz.mrmelon54.armoredelytra.ChestplateWithElytraItem;
+import xyz.mrmelon54.armoredelytra.duckinterfaces.ArmoredElytraWearingEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;

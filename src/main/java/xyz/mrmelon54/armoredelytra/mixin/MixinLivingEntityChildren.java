@@ -1,4 +1,4 @@
-package net.onpointcoding.armoredelytra.mixin;
+package xyz.mrmelon54.armoredelytra.mixin;
 
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EntityType;
@@ -9,8 +9,8 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.onpointcoding.armoredelytra.ChestplateWithElytraItem;
-import net.onpointcoding.armoredelytra.duckinterfaces.ArmoredElytraWearingEntity;
+import xyz.mrmelon54.armoredelytra.ChestplateWithElytraItem;
+import xyz.mrmelon54.armoredelytra.duckinterfaces.ArmoredElytraWearingEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

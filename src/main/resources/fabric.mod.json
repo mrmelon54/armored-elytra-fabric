@@ -16,7 +16,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.onpointcoding.armoredelytra.ArmoredElytra"
+      "xyz.mrmelon54.armoredelytra.ArmoredElytra"
     ]
   },
   "mixins": [

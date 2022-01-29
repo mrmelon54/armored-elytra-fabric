@@ -1,20 +1,20 @@
-package net.onpointcoding.armoredelytra.items;
+package xyz.mrmelon54.armoredelytra.items;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
-import net.onpointcoding.armoredelytra.ArmoredElytra;
-import net.onpointcoding.armoredelytra.ChestplateWithElytraItem;
+import xyz.mrmelon54.armoredelytra.ArmoredElytra;
+import xyz.mrmelon54.armoredelytra.ChestplateWithElytraItem;
 
-public class VanillaTweaksArmoredElytraItem implements ChestplateWithElytraItem {
+public class VoodooTweaksPlatedElytraItem implements ChestplateWithElytraItem {
     public final ItemStack stack;
     public boolean isValid;
     public Item ChestplateType;
     public boolean displayChestplateTick = false;
 
-    public VanillaTweaksArmoredElytraItem(ItemStack stack) {
+    public VoodooTweaksPlatedElytraItem(ItemStack stack) {
         this.stack = stack;
         this.isValid = isArmoredElytra();
     }
@@ -23,6 +23,7 @@ public class VanillaTweaksArmoredElytraItem implements ChestplateWithElytraItem 
         displayChestplateTick = v;
     }
 
+    @Override
     public boolean getDisplayChestplateTick() {
         return displayChestplateTick;
     }
@@ -31,6 +32,7 @@ public class VanillaTweaksArmoredElytraItem implements ChestplateWithElytraItem 
         return stack;
     }
 
+    @Override
     public boolean getStatus() {
         return isValid;
     }
@@ -40,14 +42,14 @@ public class VanillaTweaksArmoredElytraItem implements ChestplateWithElytraItem 
         return ChestplateType;
     }
 
-    public static VanillaTweaksArmoredElytraItem fromItemStack(ItemStack stack) {
-        VanillaTweaksArmoredElytraItem item = new VanillaTweaksArmoredElytraItem(stack);
+    public static VoodooTweaksPlatedElytraItem fromItemStack(ItemStack stack) {
+        VoodooTweaksPlatedElytraItem item = new VoodooTweaksPlatedElytraItem(stack);
         return item.isValid ? item : null;
     }
 
     public boolean equals(ChestplateWithElytraItem b) {
         if (b == null) return false;
-        if (b instanceof VanillaTweaksArmoredElytraItem) return stack == ((VanillaTweaksArmoredElytraItem) b).stack;
+        if (b instanceof VoodooTweaksPlatedElytraItem) return stack == ((VoodooTweaksPlatedElytraItem) b).stack;
         return false;
     }
 
@@ -86,23 +88,48 @@ public class VanillaTweaksArmoredElytraItem implements ChestplateWithElytraItem 
     }
 
     public NbtCompound getElytra() {
-        NbtCompound armelydata = getArmoredElytraData();
-        if (armelydata != null) {
-            return armelydata.getCompound("elytra");
-        }
-        return null;
+        return getArmoredElytraData();
     }
 
     public NbtCompound getChestplate() {
         NbtCompound armelydata = getArmoredElytraData();
         if (armelydata != null) {
-            return armelydata.getCompound("chestplate");
+            String plate = armelydata.getCompound("tag").getString("Plate");
+            NbtCompound chestplateStack;
+            switch (plate) {
+                case "netherite":
+                    chestplateStack = (new ItemStack(Items.NETHERITE_CHESTPLATE)).writeNbt(new NbtCompound());
+                    break;
+                case "diamond":
+                    chestplateStack = (new ItemStack(Items.DIAMOND_CHESTPLATE)).writeNbt(new NbtCompound());
+                    break;
+                case "golden":
+                    chestplateStack = (new ItemStack(Items.GOLDEN_CHESTPLATE)).writeNbt(new NbtCompound());
+                    break;
+                case "iron":
+                    chestplateStack = (new ItemStack(Items.IRON_CHESTPLATE)).writeNbt(new NbtCompound());
+                    break;
+                case "chainmail":
+                    chestplateStack = (new ItemStack(Items.CHAINMAIL_CHESTPLATE)).writeNbt(new NbtCompound());
+                    break;
+                case "leather":
+                    chestplateStack = (new ItemStack(Items.LEATHER_CHESTPLATE)).writeNbt(new NbtCompound());
+                    break;
+                default:
+                    return null;
+            }
+            if (armelydata.getCompound("tag").contains("color")) {
+                NbtCompound displaytag = chestplateStack.getCompound("tag").getCompound("display");
+                displaytag.putInt("color", armelydata.getCompound("tag").getInt("color"));
+                chestplateStack.getCompound("tag").put("display", displaytag);
+            }
+            return chestplateStack;
         }
         return null;
     }
 
     public NbtCompound getArmoredElytraData() {
-        if (!stack.isEmpty() && stack.getItem() == Items.ELYTRA) return stack.getSubNbt("armElyData");
+        if (!stack.isEmpty() && stack.getItem() == Items.ELYTRA) return stack.writeNbt(new NbtCompound());
         return null;
     }
 

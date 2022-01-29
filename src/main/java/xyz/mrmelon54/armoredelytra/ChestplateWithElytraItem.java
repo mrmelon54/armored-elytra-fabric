@@ -1,12 +1,12 @@
-package net.onpointcoding.armoredelytra;
+package xyz.mrmelon54.armoredelytra;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.onpointcoding.armoredelytra.items.Pim16aap2SpigotArmoredElytraItem;
-import net.onpointcoding.armoredelytra.items.TheIllusiveC4ColytraItem;
-import net.onpointcoding.armoredelytra.items.VanillaTweaksArmoredElytraItem;
-import net.onpointcoding.armoredelytra.items.VoodooTweaksPlatedElytraItem;
+import xyz.mrmelon54.armoredelytra.items.Pim16aap2SpigotArmoredElytraItem;
+import xyz.mrmelon54.armoredelytra.items.TheIllusiveC4ColytraItem;
+import xyz.mrmelon54.armoredelytra.items.VanillaTweaksArmoredElytraItem;
+import xyz.mrmelon54.armoredelytra.items.VoodooTweaksPlatedElytraItem;
 
 public interface ChestplateWithElytraItem {
     void setDisplayChestplateTick(boolean v);
