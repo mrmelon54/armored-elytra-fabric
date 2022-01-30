@@ -6,39 +6,63 @@
   "overrides": [
     {
       "predicate": {
-        "armored_elytra_type": 0.1
+        "armored_elytra_type": 0.01
       },
       "model": "armoredelytra:item/netherite_armored_elytra"
     },
     {
       "predicate": {
-        "armored_elytra_type": 0.2
+        "armored_elytra_type": 0.02
       },
       "model": "armoredelytra:item/diamond_armored_elytra"
     },
     {
       "predicate": {
-        "armored_elytra_type": 0.3
+        "armored_elytra_type": 0.03
       },
       "model": "armoredelytra:item/golden_armored_elytra"
     },
     {
       "predicate": {
-        "armored_elytra_type": 0.4
+        "armored_elytra_type": 0.04
       },
       "model": "armoredelytra:item/iron_armored_elytra"
     },
     {
       "predicate": {
-        "armored_elytra_type": 0.5
+        "armored_elytra_type": 0.05
       },
       "model": "armoredelytra:item/chainmail_armored_elytra"
     },
     {
       "predicate": {
-        "armored_elytra_type": 0.6
+        "armored_elytra_type": 0.06
       },
       "model": "armoredelytra:item/leather_armored_elytra"
+    },
+    {
+      "predicate": {
+        "armored_elytra_type": 0.07
+      },
+      "model": "armoredelytra:item/netherite_iron_armored_elytra"
+    },
+    {
+      "predicate": {
+        "armored_elytra_type": 0.08
+      },
+      "model": "armoredelytra:item/netherite_golden_armored_elytra"
+    },
+    {
+      "predicate": {
+        "armored_elytra_type": 0.09
+      },
+      "model": "armoredelytra:item/netherite_emerald_armored_elytra"
+    },
+    {
+      "predicate": {
+        "armored_elytra_type": 0.10
+      },
+      "model": "armoredelytra:item/netherite_diamond_armored_elytra"
     }
   ]
 }

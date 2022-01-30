@@ -1,10 +1,11 @@
 package xyz.mrmelon54.armoredelytra;
 
-import net.fabricmc.api.ClientModInitializer;
+import com.autovw.advancednetherite.core.ModItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
@@ -13,12 +14,24 @@ import net.minecraft.util.Identifier;
 import xyz.mrmelon54.armoredelytra.duckinterfaces.ArmoredElytraWearingEntity;
 import xyz.mrmelon54.armoredelytra.models.ArmoredElytraModelProvider;
 
-public class ArmoredElytra implements ModInitializer, ClientModInitializer {
+import java.util.List;
+
+public class ArmoredElytra implements ModInitializer {
     public static final int DEFAULT_LEATHER_COLOR = 10511680;
 
     @Override
     public void onInitialize() {
         System.out.println("Loading armored elytra");
+
+        if (FabricLoader.getInstance().isModLoaded("advancednetherite")) {
+            System.out.println("[Armored Elytra] Detected Advanced Netherite so adding those chestplates");
+            InternalArrays.CHESTPLATES.addAll(List.of(
+                    ModItems.NETHERITE_IRON_CHESTPLATE,
+                    ModItems.NETHERITE_GOLD_CHESTPLATE,
+                    ModItems.NETHERITE_EMERALD_CHESTPLATE,
+                    ModItems.NETHERITE_DIAMOND_CHESTPLATE
+            ));
+        }
 
         // Listen for the end of every tick
         ClientTickEvents.END_CLIENT_TICK.register(this::tick);
@@ -39,10 +52,6 @@ public class ArmoredElytra implements ModInitializer, ClientModInitializer {
         for (Item chestplateType : InternalArrays.CHESTPLATES) {
             FabricModelPredicateProviderRegistry.register(chestplateType, new Identifier("armored_elytra_type"), armoredElytraModelProvider);
         }
-    }
-
-    @Override
-    public void onInitializeClient() {
     }
 
     public void tick(MinecraftClient mc) {

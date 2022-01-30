@@ -20,7 +20,7 @@ public class ArmoredElytraModelProvider implements UnclampedModelPredicateProvid
                     return 0;
                 }
 
-                return (armoredElytraId + 1) / 10;
+                return (armoredElytraId + 1) / 100;
             }
         }
         return 0;
