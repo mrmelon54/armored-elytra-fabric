@@ -5,7 +5,7 @@
 
 name: Java CI
 
-on: [push]
+on: [ push ]
 
 jobs:
   build:
@@ -24,6 +24,9 @@ jobs:
         uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
         with:
           arguments: build
+
+      - name: Compress
+        run: tar -czvf upload.tar.gz build/libs/*.jar
 
       - name: Deploy
         uses: fjogeleit/http-request-action@v1
