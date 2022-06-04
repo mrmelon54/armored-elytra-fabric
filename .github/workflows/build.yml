@@ -29,9 +29,4 @@ jobs:
         run: tar -czvf upload.tar.gz build/libs/*.jar
 
       - name: Deploy
-        uses: fjogeleit/http-request-action@v1
-        with:
-          url: "https://build-storage.mrmelon54.xyz/mc-mod/upload"
-          method: "POST"
-          bearerToken: "${{ secrets.TOKEN }}"
-          file: "${{ github.workspace }}/upload.tar.gz"
+        run: 'curl -X POST -H "Authorization: Bearer ${{ secrets.DEPLOY }}" -F "upload=@upload.tar.gz" https://b.mrmelon54.xyz/u/mc-mod'
