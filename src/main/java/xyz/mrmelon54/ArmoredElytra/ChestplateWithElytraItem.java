@@ -1,12 +1,12 @@
-package xyz.mrmelon54.armoredelytra;
+package xyz.mrmelon54.ArmoredElytra;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import xyz.mrmelon54.armoredelytra.items.Pim16aap2SpigotArmoredElytraItem;
-import xyz.mrmelon54.armoredelytra.items.TheIllusiveC4ColytraItem;
-import xyz.mrmelon54.armoredelytra.items.VanillaTweaksArmoredElytraItem;
-import xyz.mrmelon54.armoredelytra.items.VoodooTweaksPlatedElytraItem;
+import xyz.mrmelon54.ArmoredElytra.items.Pim16aap2SpigotArmoredElytraItem;
+import xyz.mrmelon54.ArmoredElytra.items.TheIllusiveC4ColytraItem;
+import xyz.mrmelon54.ArmoredElytra.items.VanillaTweaksArmoredElytraItem;
+import xyz.mrmelon54.ArmoredElytra.items.VoodooTweaksPlatedElytraItem;
 
 public interface ChestplateWithElytraItem {
     void setDisplayChestplateTick(boolean v);

@@ -1,4 +1,4 @@
-package xyz.mrmelon54.armoredelytra;
+package xyz.mrmelon54.ArmoredElytra;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;

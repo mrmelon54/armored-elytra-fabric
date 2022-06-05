@@ -1,13 +1,13 @@
-package xyz.mrmelon54.armoredelytra.items;
+package xyz.mrmelon54.ArmoredElytra.items;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
-import xyz.mrmelon54.armoredelytra.ArmoredElytra;
-import xyz.mrmelon54.armoredelytra.ChestplateWithElytraItem;
-import xyz.mrmelon54.armoredelytra.InternalArrays;
+import xyz.mrmelon54.ArmoredElytra.ArmoredElytra;
+import xyz.mrmelon54.ArmoredElytra.ChestplateWithElytraItem;
+import xyz.mrmelon54.ArmoredElytra.InternalArrays;
 
 public class TheIllusiveC4ColytraItem implements ChestplateWithElytraItem {
     public final ItemStack stack;

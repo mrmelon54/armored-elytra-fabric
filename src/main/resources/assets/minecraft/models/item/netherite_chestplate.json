@@ -8,7 +8,7 @@
       "predicate": {
         "armored_elytra_type": 0.1
       },
-      "model": "armoredelytra:item/netherite_armored_elytra"
+      "model": "armored-elytra:item/netherite_armored_elytra"
     }
   ]
 }

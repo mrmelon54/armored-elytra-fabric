@@ -9,7 +9,7 @@
       "predicate": {
         "armored_elytra_type": 0.1
       },
-      "model": "armoredelytra:item/leather_armored_elytra"
+      "model": "armored-elytra:item/leather_armored_elytra"
     }
   ]
 }

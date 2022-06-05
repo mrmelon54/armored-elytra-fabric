@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "xyz.mrmelon54.armoredelytra.mixin",
+  "package": "xyz.mrmelon54.ArmoredElytra.mixin",
   "compatibilityLevel": "JAVA_16",
   "client": [
     "MixinArmorFeatureRenderer",

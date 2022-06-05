@@ -1,4 +1,4 @@
-package xyz.mrmelon54.armoredelytra;
+package xyz.mrmelon54.ArmoredElytra;
 
 import com.autovw.advancednetherite.core.ModItems;
 import net.fabricmc.api.ModInitializer;
@@ -11,8 +11,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
-import xyz.mrmelon54.armoredelytra.duckinterfaces.ArmoredElytraWearingEntity;
-import xyz.mrmelon54.armoredelytra.models.ArmoredElytraModelProvider;
+import xyz.mrmelon54.ArmoredElytra.duckinterfaces.ArmoredElytraWearingEntity;
+import xyz.mrmelon54.ArmoredElytra.models.ArmoredElytraModelProvider;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
-package xyz.mrmelon54.armoredelytra.mixin;
+package xyz.mrmelon54.ArmoredElytra.mixin;
 
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
-import xyz.mrmelon54.armoredelytra.ChestplateWithElytraItem;
-import xyz.mrmelon54.armoredelytra.duckinterfaces.ArmoredElytraWearingEntity;
+import xyz.mrmelon54.ArmoredElytra.ChestplateWithElytraItem;
+import xyz.mrmelon54.ArmoredElytra.duckinterfaces.ArmoredElytraWearingEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 

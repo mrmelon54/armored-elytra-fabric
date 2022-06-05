@@ -1,6 +1,6 @@
-package xyz.mrmelon54.armoredelytra.duckinterfaces;
+package xyz.mrmelon54.ArmoredElytra.duckinterfaces;
 
-import xyz.mrmelon54.armoredelytra.ChestplateWithElytraItem;
+import xyz.mrmelon54.ArmoredElytra.ChestplateWithElytraItem;
 
 public interface ArmoredElytraWearingEntity {
     ChestplateWithElytraItem getArmoredElytra();
