@@ -34,7 +34,7 @@ dependencies {
     modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}") {
         transitive = false
     }
-    modImplementation("curse.maven:advanced-netherite-fabric-547881:3810741") {
+    modImplementation("curse.maven:advanced-netherite-fabric-547881:3820759") {
         transitive = false
     }
 }

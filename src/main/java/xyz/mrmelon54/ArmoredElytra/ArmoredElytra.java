@@ -1,12 +1,13 @@
 package xyz.mrmelon54.ArmoredElytra;
 
-import com.autovw.advancednetherite.core.ModItems;
+import com.autovw.advancednetheritefabric.core.registry.ModItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -40,7 +41,7 @@ public class ArmoredElytra implements ModInitializer {
         ArmoredElytraModelProvider armoredElytraModelProvider = new ArmoredElytraModelProvider();
 
         // Setup the model provider and color provider for the elytra item
-        FabricModelPredicateProviderRegistry.register(Items.ELYTRA, new Identifier("armored_elytra_type"), armoredElytraModelProvider);
+        ModelPredicateProviderRegistry.register(Items.ELYTRA, new Identifier("armored_elytra_type"), armoredElytraModelProvider);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
             if (stack == null) return -1;
             ChestplateWithElytraItem item = ChestplateWithElytraItem.fromItemStack(stack);
@@ -49,9 +50,8 @@ public class ArmoredElytra implements ModInitializer {
         }, Items.ELYTRA);
 
         // Setup the model provider for all chestplate items
-        for (Item chestplateType : InternalArrays.CHESTPLATES) {
-            FabricModelPredicateProviderRegistry.register(chestplateType, new Identifier("armored_elytra_type"), armoredElytraModelProvider);
-        }
+        for (Item chestplateType : InternalArrays.CHESTPLATES)
+            ModelPredicateProviderRegistry.register(Items.ELYTRA, new Identifier("armored_elytra_type"), armoredElytraModelProvider);
     }
 
     public void tick(MinecraftClient mc) {
