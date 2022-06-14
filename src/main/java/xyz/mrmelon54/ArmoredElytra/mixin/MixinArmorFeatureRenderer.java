@@ -8,6 +8,9 @@ import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ItemStack;
+import org.jetbrains.annotations.Nullable;
 import xyz.mrmelon54.ArmoredElytra.ChestplateWithElytraItem;
 import xyz.mrmelon54.ArmoredElytra.duckinterfaces.ArmoredElytraWearingEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -29,20 +32,40 @@ public abstract class MixinArmorFeatureRenderer<T extends LivingEntity, M extend
     protected abstract A getArmor(EquipmentSlot slot);
 
     @Shadow
-    protected abstract void renderArmor(MatrixStack matrices, VertexConsumerProvider vertexConsumers, T livingEntity, EquipmentSlot equipmentSlot, int i, A bipedEntityModel);
+    protected abstract void setVisible(A bipedModel, EquipmentSlot slot);
+
+    @Shadow
+    protected abstract boolean usesSecondLayer(EquipmentSlot slot);
+
+    @Shadow
+    protected abstract void renderArmorParts(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, ArmorItem item, boolean usesSecondLayer, A model, boolean legs, float red, float green, float blue, @Nullable String overlay);
 
     @Inject(at = @At("HEAD"), method = "render*")
     public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, T livingEntity, float f, float g, float h, float j, float k, float l, CallbackInfo info) {
-        if (livingEntity instanceof ArmoredElytraWearingEntity armoredElytraWearingEntity) {
+        renderChestplateForArmouredElytra(matrixStack, vertexConsumerProvider, livingEntity, i, this.getArmor(EquipmentSlot.CHEST));
+    }
+
+    private void renderChestplateForArmouredElytra(MatrixStack matrices, VertexConsumerProvider vertexConsumers, T entity, int light, A model) {
+        if (entity instanceof ArmoredElytraWearingEntity armoredElytraWearingEntity) {
             ChestplateWithElytraItem armoredElytra = armoredElytraWearingEntity.getArmoredElytra();
             if (armoredElytra != null) {
-                armoredElytra.setDisplayChestplateTick(true);
-                if (armoredElytra.hasEnchantmentGlint()) {
-                    this.renderArmor(matrixStack, vertexConsumerProvider, livingEntity, EquipmentSlot.CHEST, i, this.getArmor(EquipmentSlot.CHEST));
-                } else {
-                    this.renderArmor(matrixStack, vertexConsumerProvider, livingEntity, EquipmentSlot.CHEST, i, this.getArmor(EquipmentSlot.CHEST));
+                ItemStack chestplateItemStack = armoredElytra.getChestplateItemStack();
+                if (chestplateItemStack.getItem() instanceof ArmorItem armorItem) {
+                    this.getContextModel().setAttributes(model);
+                    this.setVisible(model, EquipmentSlot.CHEST);
+                    boolean bl = this.usesSecondLayer(EquipmentSlot.CHEST);
+                    boolean bl2 = armoredElytra.hasEnchantmentGlint();
+                    int i = armoredElytra.getLeatherChestplateColor();
+                    if (i != -1) {
+                        float f = (float) (i >> 16 & 255) / 255f;
+                        float g = (float) (i >> 8 & 255) / 255f;
+                        float h = (float) (i & 255) / 255f;
+                        this.renderArmorParts(matrices, vertexConsumers, light, armorItem, bl2, model, bl, f, g, h, null);
+                        this.renderArmorParts(matrices, vertexConsumers, light, armorItem, bl2, model, bl, 1f, 1f, 1f, "overlay");
+                    } else {
+                        this.renderArmorParts(matrices, vertexConsumers, light, armorItem, bl2, model, bl, 1f, 1f, 1f, null);
+                    }
                 }
-                armoredElytra.setDisplayChestplateTick(false);
             }
         }
     }

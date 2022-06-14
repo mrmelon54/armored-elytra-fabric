@@ -12,20 +12,11 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
     public final ItemStack stack;
     public boolean isValid;
     public Item ChestplateType;
-    public boolean displayChestplateTick = false;
     public int color = ArmoredElytra.DEFAULT_LEATHER_COLOR;
 
     public Pim16aap2SpigotArmoredElytraItem(ItemStack stack) {
         this.stack = stack;
         this.isValid = isArmoredElytra();
-    }
-
-    public void setDisplayChestplateTick(boolean v) {
-        displayChestplateTick = v;
-    }
-
-    public boolean getDisplayChestplateTick() {
-        return displayChestplateTick;
     }
 
     public ItemStack getItemStack() {
@@ -64,29 +55,36 @@ public class Pim16aap2SpigotArmoredElytraItem implements ChestplateWithElytraIte
             NbtCompound elytra = getElytra();
             if (elytra != null) {
                 switch (elytra.getInt("armoredelytra:armor_tier_level")) {
-                    case 1:
+                    case 1 -> {
                         ChestplateType = Items.LEATHER_CHESTPLATE;
                         if (elytra.getKeys().contains("armoredelytra:armored_elytra_color"))
                             color = elytra.getInt("armoredelytra:armored_elytra_color");
                         return true;
-                    case 2:
+                    }
+                    case 2 -> {
                         ChestplateType = Items.GOLDEN_CHESTPLATE;
                         return true;
-                    case 3:
+                    }
+                    case 3 -> {
                         ChestplateType = Items.CHAINMAIL_CHESTPLATE;
                         return true;
-                    case 4:
+                    }
+                    case 4 -> {
                         ChestplateType = Items.IRON_CHESTPLATE;
                         return true;
-                    case 5:
+                    }
+                    case 5 -> {
                         ChestplateType = Items.DIAMOND_CHESTPLATE;
                         return true;
-                    case 6:
+                    }
+                    case 6 -> {
                         ChestplateType = Items.NETHERITE_CHESTPLATE;
                         return true;
-                    default:
+                    }
+                    default -> {
                         ChestplateType = Items.AIR;
                         return false;
+                    }
                 }
             }
         }

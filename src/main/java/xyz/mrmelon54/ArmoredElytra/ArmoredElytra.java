@@ -4,7 +4,6 @@ import com.autovw.advancednetheritefabric.core.registry.ModItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
@@ -26,12 +25,7 @@ public class ArmoredElytra implements ModInitializer {
 
         if (FabricLoader.getInstance().isModLoaded("advancednetherite")) {
             System.out.println("[Armored Elytra] Detected Advanced Netherite so adding those chestplates");
-            InternalArrays.CHESTPLATES.addAll(List.of(
-                    ModItems.NETHERITE_IRON_CHESTPLATE,
-                    ModItems.NETHERITE_GOLD_CHESTPLATE,
-                    ModItems.NETHERITE_EMERALD_CHESTPLATE,
-                    ModItems.NETHERITE_DIAMOND_CHESTPLATE
-            ));
+            InternalArrays.CHESTPLATES.addAll(List.of(ModItems.NETHERITE_IRON_CHESTPLATE, ModItems.NETHERITE_GOLD_CHESTPLATE, ModItems.NETHERITE_EMERALD_CHESTPLATE, ModItems.NETHERITE_DIAMOND_CHESTPLATE));
         }
 
         // Listen for the end of every tick

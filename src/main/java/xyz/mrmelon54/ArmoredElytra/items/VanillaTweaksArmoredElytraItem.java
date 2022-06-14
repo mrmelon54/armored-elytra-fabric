@@ -5,26 +5,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
-import xyz.mrmelon54.ArmoredElytra.ArmoredElytra;
 import xyz.mrmelon54.ArmoredElytra.ChestplateWithElytraItem;
 
 public class VanillaTweaksArmoredElytraItem implements ChestplateWithElytraItem {
     public final ItemStack stack;
     public boolean isValid;
     public Item ChestplateType;
-    public boolean displayChestplateTick = false;
 
     public VanillaTweaksArmoredElytraItem(ItemStack stack) {
         this.stack = stack;
         this.isValid = isArmoredElytra();
-    }
-
-    public void setDisplayChestplateTick(boolean v) {
-        displayChestplateTick = v;
-    }
-
-    public boolean getDisplayChestplateTick() {
-        return displayChestplateTick;
     }
 
     public ItemStack getItemStack() {
@@ -71,18 +61,6 @@ public class VanillaTweaksArmoredElytraItem implements ChestplateWithElytraItem 
             }
         }
         return false;
-    }
-
-    public int getLeatherChestplateColor() {
-        NbtCompound leatherChestplate = getChestplate();
-        if (ItemStack.fromNbt(leatherChestplate).getItem() != Items.LEATHER_CHESTPLATE) return -1;
-        if (leatherChestplate == null) return -1;
-        NbtCompound tagdata = leatherChestplate.getCompound("tag");
-        if (tagdata == null) return ArmoredElytra.DEFAULT_LEATHER_COLOR;
-        NbtCompound displaydata = tagdata.getCompound("display");
-        if (displaydata == null) return ArmoredElytra.DEFAULT_LEATHER_COLOR;
-        if (!displaydata.contains("color")) return ArmoredElytra.DEFAULT_LEATHER_COLOR;
-        return displaydata.getInt("color");
     }
 
     public NbtCompound getElytra() {
