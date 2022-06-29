@@ -4,7 +4,7 @@
 
 Requires the [Fabric Loader](https://fabricmc.net/use/) and [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
 
-Logo made by [@LimeShulkerBox](https://www.curseforge.com/members/limeshulkerbox/projects)
+Logo made by [@CarbonGhost](https://github.com/CarbonGhost)
 
 ## Setup
 
@@ -25,3 +25,4 @@ Logo made by [@LimeShulkerBox](https://www.curseforge.com/members/limeshulkerbox
 ## Download
 
 - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/armored-elytra)
+- [Modrinth](https://modrinth.com/mod/armored-elytra)
