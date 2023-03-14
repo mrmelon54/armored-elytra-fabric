@@ -1,14 +1,15 @@
 package xyz.mrmelon54.ArmoredElytra.models;
 
-import net.minecraft.client.item.UnclampedModelPredicateProvider;
+import org.jetbrains.annotations.Nullable;
+
+import net.minecraft.client.item.ClampedModelPredicateProvider;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import xyz.mrmelon54.ArmoredElytra.ChestplateWithElytraItem;
 import xyz.mrmelon54.ArmoredElytra.InternalArrays;
-import org.jetbrains.annotations.Nullable;
 
-public class ArmoredElytraModelProvider implements UnclampedModelPredicateProvider {
+public class ArmoredElytraModelProvider implements ClampedModelPredicateProvider {
     @Override
     public float unclampedCall(ItemStack stack, @Nullable ClientWorld world, @Nullable LivingEntity entity, int seed) {
         if (stack != null && !stack.isEmpty()) {

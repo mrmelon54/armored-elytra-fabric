@@ -29,20 +29,20 @@ public abstract class MixinArmorFeatureRenderer<T extends LivingEntity, M extend
     public abstract void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, T livingEntity, float f, float g, float h, float j, float k, float l);
 
     @Shadow
-    protected abstract A getArmor(EquipmentSlot slot);
+    protected abstract A getModel(EquipmentSlot slot);
 
     @Shadow
     protected abstract void setVisible(A bipedModel, EquipmentSlot slot);
 
     @Shadow
-    protected abstract boolean usesSecondLayer(EquipmentSlot slot);
+    protected abstract boolean usesInnerModel(EquipmentSlot slot);
 
     @Shadow
     protected abstract void renderArmorParts(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, ArmorItem item, boolean usesSecondLayer, A model, boolean legs, float red, float green, float blue, @Nullable String overlay);
 
     @Inject(at = @At("HEAD"), method = "render*")
     public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, T livingEntity, float f, float g, float h, float j, float k, float l, CallbackInfo info) {
-        renderChestplateForArmouredElytra(matrixStack, vertexConsumerProvider, livingEntity, i, this.getArmor(EquipmentSlot.CHEST));
+        renderChestplateForArmouredElytra(matrixStack, vertexConsumerProvider, livingEntity, i, this.getModel(EquipmentSlot.CHEST));
     }
 
     private void renderChestplateForArmouredElytra(MatrixStack matrices, VertexConsumerProvider vertexConsumers, T entity, int light, A model) {
@@ -51,9 +51,9 @@ public abstract class MixinArmorFeatureRenderer<T extends LivingEntity, M extend
             if (armoredElytra != null) {
                 ItemStack chestplateItemStack = armoredElytra.getChestplateItemStack();
                 if (chestplateItemStack.getItem() instanceof ArmorItem armorItem) {
-                    this.getContextModel().setAttributes(model);
+                    this.getContextModel().copyBipedStateTo(model);
                     this.setVisible(model, EquipmentSlot.CHEST);
-                    boolean bl = this.usesSecondLayer(EquipmentSlot.CHEST);
+                    boolean bl = this.usesInnerModel(EquipmentSlot.CHEST);
                     boolean bl2 = armoredElytra.hasEnchantmentGlint();
                     int i = armoredElytra.getLeatherChestplateColor();
                     if (i != -1) {
